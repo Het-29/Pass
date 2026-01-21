@@ -1,0 +1,323 @@
+/* --- RESET & BASIC SETUP --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #eef2f5; /* Light grey background for desktop view */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- PHONE CONTAINER --- */
+.app-container {
+    background-color: #fbfdfe; /* NJ Transit Blue */
+    width: 100%;
+    max-width: 400px; /* Mobile width constraint */
+    height: 100vh;
+    max-height: 850px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* --- HEADER --- */
+.top-bar {
+    background-color: #1683d3; /* Same as header */
+    height: 38%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+header {
+    background-color: #1683d3;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.back-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-right: 24px; /* Balances the back arrow spacing */
+}
+
+/* Extra box to simulate phone top area */
+.extra-box {
+    height: 100px;
+    background-color: #1683d3; /* Same as header */
+}
+
+/* --- MAIN TICKET CARD --- */
+.ticket-card {
+    background-color: white;
+    margin: 15% 20px 25px 20px;  
+    border-radius: 12px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-top: 40px;
+    box-shadow: 0 0px 18px 9px rgba(0,0,0,0.15);
+    position: relative;
+    overflow-y: auto;
+}
+
+/* --- QR CODE SECTION --- */
+/* .qr-wrapper {
+    background-color: #c586c5; /* The specific purple border color 
+    padding: 10px;
+    border-radius: 16px;
+    margin-top: 10px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.qr-wrapper {
+    /* background-color: var(--qr-border); */
+    /* background-color: #4a90e2; The lighter blue background */
+    border: 15px solid #66af59; /* Add this specific border line */
+    padding: 1px;
+    border-radius: 16px;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    margin-top: -0px;
+}
+
+.qr-code {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    /* Using a generic QR API for the visual */
+    /* background-image: url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=NJTransitExample'); */
+    background-size: cover;
+    border-radius: 4px;
+    border: 4px solid white; /* Inner white padding */
+}
+img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+   /* margin: -2px -2px -2px -2px; */
+    
+}
+
+.enlarge-text {
+    color: #333;
+    font-size: 0.9rem;
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+/* --- DIVIDER --- */
+.dashed-line {
+    width: 100%;
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin-bottom: 15px;
+    margin-top: -15px;
+}
+
+/* --- TICKET DETAILS --- */
+.ticket-type {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+}
+
+#zone-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #000;
+    line-height: 1;
+    /* margin: 5px 0; */
+    cursor: pointer;
+    text-align: center;
+    padding-top: 0%;
+    margin-top: -13px;
+}
+
+.zone-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.passenger-count {
+    font-size: 1.3rem;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Spacer pushes the footer elements to the bottom */
+.spacer {
+    flex-grow: 1;
+    min-height: 20px; 
+}
+
+/* --- FOOTER / TIMER --- */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #007aff; /* Bright blue */
+    width: 90%; /* Matches screenshot visual */
+    border-radius: 4px;
+}
+
+.timer-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: underline;
+    font-size: 0.65rem;
+    font-weight: 290;
+    margin-bottom: -10px; ;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* --- SVG ICON --- */
+svg {
+    fill: white;
+    width: 28px;
+    height: 28px;
+}
+
+:root {
+    --nj-blue: #1683d3;
+    --qr-border: #4a90e2; /* Lighter blue in the screenshot */
+    --seg-purple-1: #A6B7F9;
+    --seg-purple-2: #A541C4;
+    --seg-pink: #B19EB1;
+}
+
+.ticket-details-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* justify-content: left; */
+    padding-top: 0%;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+    top: 0;
+}
+.ticket-details-row .date-badge{
+    margin-top: -2px
+}
+.date-badge {
+
+    background-color: #66af59;
+    position: absolute;
+    left: 0;
+    color: white;
+    padding-top:  0px;
+    border-radius: 6px;
+    border: 3px solid #000;
+    /* text-align: center; */
+    font-weight: 800;
+    z-index: 2
+}
+
+.date-badge .month { 
+    font-size: 1.2rem; 
+    line-height: 1; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.date-badge .year { 
+    font-size: 1.4rem; 
+    line-height: 1; 
+    padding-bottom: 5px;
+}
+
+/* Segmented Bar */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; } /*Dims the bar halfway*/
+    100% { opacity: 1; }
+}
+.color-segments {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 15px;
+    animation: blink 1s step-end infinite
+}
+
+.segment { flex: 1; }
+.purple-dark { background-color: var(--seg-purple-1); }
+.purple-light { background-color: var(--seg-purple-2); }
+.pink { background-color: var(--seg-pink); }
+
+/* Progress Bar Tweaks */
+.progress-container {
+    width: 80%; /* Shorter bar like the image */
+    height: 4px;
+    background-color: #e0e0e0;
+}
+
+.progress-bar {
+    width: 0%; /* Matches blue segment in image */
+    background-color: #007aff;
+    transition: width 0.5s ease-in-out;
+}
+
+.timer-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
